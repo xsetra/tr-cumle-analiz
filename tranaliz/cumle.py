@@ -2,6 +2,7 @@
 
 from kelime import Kelime
 from kelime import KelimeTipi
+import copy
 
 
 class Cumle:
@@ -44,21 +45,17 @@ class Cumle:
 
     def isim_tamlamalarini_bul(self):
         i = 0
-        combo = 0
-        last_kelime = Kelime()
         for k in self._cumleKelimeleri:
+            kelime_list = []
             if i != 0:
-                if k.kelimeTipi.name == 'baglac':
-                    continue
-                elif k.kelimeTipi.name == 'isim' and last_kelime.kelimeTipi.name == 'isim':
-                    combo += 1
-                    Kelime.kelime_concat(k, last_kelime)
-                    if self._isimTamlamalari.get(last_kelime.kelimeIcerik) is not None:
-                        self._isimTamlamalari[last_kelime.kelimeIcerik] += 1
-                    else:
-                        self._isimTamlamalari[last_kelime.kelimeIcerik] = 1
+                if k.kelimeTipi.name == 'isim' and last_kelime.kelimeTipi.name == 'isim':
 
+                    kelime_list.append(k)
+                    kelime_list.append(tmp_kelime)
+                    Kelime.kelime_concat(k, last_kelime)
+                    self._isimTamlamalari[last_kelime.kelimeIcerik] = kelime_list
             i += 1
             last_kelime = k
+            tmp_kelime = copy.copy(k)
 
 

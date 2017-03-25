@@ -2,7 +2,8 @@
 
 
 import pymysql
-from kelime import *
+from kelime import Kelime
+from kelime import KelimeTipi
 from cumle import Cumle
 from paragraf import Paragraf
 
@@ -11,7 +12,7 @@ class Veritabani:
     def __init__(self):
         self.hostname = "localhost"
         self.username = "root"
-        self.password = "SECRET"
+        self.password = "ziniba"
         self.database_name = "fatma_turkish"
         self.obj_db = None
         self.cursor = None
@@ -47,7 +48,7 @@ class Veritabani:
             k_index = row[5]
             kelime = row[1]
             k_tip = row[2]
-            cumle.kelime_ekle(index=k_index, kelime=kelime, tip=k_tip)
+            cumle.kelime_ekle(index=k_index, kelime_icerik=kelime, tip=k_tip)
 
 
 if __name__ == '__main__':
