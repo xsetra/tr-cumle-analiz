@@ -8,6 +8,7 @@ class Paragraf:
         self.paragrafIcerik = ""
         self._cumleler = []
         self.__last_cumle = 0
+        self._isimTamlamalari = []
 
     def icerik_bol(self):
         cumle_list = self.paragrafIcerik.split('.')
@@ -36,10 +37,16 @@ class Paragraf:
         self._cumleler.append(obj_cumle)
         return obj_cumle
 
-    @property
+    def isim_tamlamalarini_bul(self):
+        cumle = self.get_cumle()
+        while cumle is not None:
+
+            cumle = self.get_cumle()
+
     def get_cumle(self):
         if self.__last_cumle == len(self._cumleler):
             self.__last_cumle = 0
+            return None
         return_val = self._cumleler[self.__last_cumle]
         self.__last_cumle += 1
         return return_val

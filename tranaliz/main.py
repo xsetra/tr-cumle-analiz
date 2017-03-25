@@ -15,3 +15,4 @@ db.baglan()
 db.kelime_bilgi(dokuman)
 
 dokuman.cumleleri_listele()
+

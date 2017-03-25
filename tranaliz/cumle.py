@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from kelime import *
+from kelime import Kelime
+from kelime import KelimeTipi
 
 
 class Cumle:
@@ -9,6 +10,7 @@ class Cumle:
         self.cumleIndex = 0
         self.cumleIcerik = ""
         self._cumleKelimeleri = []
+        self._isimTamlamalari = []
 
     def kelimelere_bol(self):
         self.cumleIcerik = self.cumleIcerik.strip()
@@ -19,13 +21,13 @@ class Cumle:
             i += 1
 
     def cumle_bilgi_ver(self):
-        temp = "Index : {} İçerik : {} {}".format(self.cumleIndex, self.cumleIcerik, self.kelimeleri_listele())
+        temp = "Index : {} - İçerik : {} {}".format(self.cumleIndex, self.cumleIcerik, self.kelimeleri_listele())
         return temp
 
-    def kelime_ekle(self, kelime, index, tip=None):
+    def kelime_ekle(self, kelime_icerik, index, tip=None):
         obj_kelime = Kelime()
         obj_kelime.kelimeIndex = index
-        obj_kelime.kelimeIcerik = kelime
+        obj_kelime.kelimeIcerik = kelime_icerik
         obj_kelime.kelimeTipi = KelimeTipi(tip)
         self._cumleKelimeleri.append(obj_kelime)
         return obj_kelime
@@ -39,3 +41,6 @@ class Cumle:
     def kelimeleri_sirala(self):
         sirali_liste = sorted(self._cumleKelimeleri, key=lambda sirala: sirala.kelimeIndex)
         self._cumleKelimeleri = sirali_liste
+
+
+
