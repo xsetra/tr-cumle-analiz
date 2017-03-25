@@ -54,7 +54,17 @@ class Veritabani:
         query = "SELECT * FROM kelimeler WHERE tip={}".format(KelimeTipi.isim.value)
         self.cursor.execute(query)
         results = self.cursor.fetchall()
-        print(results)
+        for row in results:
+            k = Kelime()
+            k.kelimeIcerik = row[1]
+            k.kelimeTipi = KelimeTipi.isim.value
+            k.kelimeEk = row[3]
+
+            kelime_query = "SELECT * FROM kelimeler_freq WHERE kelime={}".format(k.kelimeIcerik)
+            self.cursor.execute(kelime_query)
+            row = self.cursor.fetchone()
+            k.kelimeFreq = row[1]
+
 
 if __name__ == '__main__':
     database = Veritabani()
