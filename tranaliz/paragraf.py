@@ -69,9 +69,8 @@ class Paragraf:
     def isimleri_listele(self):
         tmp_str = "\n"
         for i in self._isimler:
-            tmp_str = i.kelime_ayrintili_bilgi_ver() + "\n"
+            tmp_str += i.kelime_ayrintili_bilgi_ver() + "\n"
         return tmp_str
-
 
     def get_cumle(self):
         if self.__last_cumle == len(self._cumleler):
