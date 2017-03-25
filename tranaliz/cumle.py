@@ -55,7 +55,7 @@ class Cumle:
                     Kelime.kelime_concat(k, last_kelime)
                     self._isimTamlamalari[last_kelime.kelimeIcerik] = kelime_list
             i += 1
-            last_kelime = k
+            last_kelime = copy.copy(k)
             tmp_kelime = copy.copy(k)
 
 

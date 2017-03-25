@@ -18,21 +18,14 @@ db.kelime_bilgi(dokuman)
 #dokuman.cumleleri_listele()
 
 c = dokuman.get_cumle()
-
 c.isim_tamlamalarini_bul()
-
+print(c._isimTamlamalari.keys(), c._isimTamlamalari.values())
 c = dokuman.get_cumle()
-
 c.isim_tamlamalarini_bul()
-
+print(c._isimTamlamalari.keys(), c._isimTamlamalari.values())
 c = dokuman.get_cumle()
-
 c.isim_tamlamalarini_bul()
-
-
-print(c.cumle_bilgi_ver())
+print(c._isimTamlamalari.keys(), c._isimTamlamalari.values())
+c = dokuman.get_cumle()
 c.isim_tamlamalarini_bul()
-res = c._isimTamlamalari.values()
-for k in res:
-    for word in k:
-        print(word.kelime_bilgi_ver())
+print(c._isimTamlamalari.keys(), c._isimTamlamalari.values())
