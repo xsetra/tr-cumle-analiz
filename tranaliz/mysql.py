@@ -10,7 +10,7 @@ class Veritabani:
 	def __init__(self):
 		self.hostname = "localhost"
 		self.username = "root"
-		self.password = "---SECRET---"
+		self.password = "ziniba"
 		self.database_name = "fatma_turkish"
 		self.obj_db = None
 		self.cursor = None

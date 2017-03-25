@@ -31,5 +31,9 @@ class Cumle:
     def kelimeleri_ver(self):
         satirlar = "\n"
         for k in self._cumleKelimeleri:
-            satirlar += '\t' + str(k.kelimeIndex) + ' - ' + k.kelimeIcerik + ' - ' + str(k.kelimeTipi.name) + ' - ' + str(k.kelimeEk) + '\n'
+            satirlar += '\t' + k.kelime_bilgi_ver()
         return satirlar
+
+    def kelimeleri_sirala(self):
+        sirali_liste = sorted(self._cumleKelimeleri, key=lambda sirala: sirala.kelimeIndex)
+        self._cumleKelimeleri = sirali_liste

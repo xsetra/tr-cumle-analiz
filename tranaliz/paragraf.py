@@ -7,6 +7,7 @@ class Paragraf:
     def __init__(self):
         self.paragrafIcerik = ""
         self._cumleler = []
+        self.__last_cumle = 0
 
     def icerik_bol(self):
         cumle_list = self.paragrafIcerik.split('.')
@@ -31,3 +32,11 @@ class Paragraf:
         objCumle.cumleIcerik = icerik
         self._cumleler.append(objCumle)
         return objCumle
+
+    @property
+    def get_cumle(self):
+        if self.__last_cumle == len(self._cumleler):
+            self.__last_cumle = 0
+        return_val = self._cumleler[self.__last_cumle]
+        self.__last_cumle += 1
+        return return_val
