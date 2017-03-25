@@ -2,6 +2,7 @@
 
 from kelime import *
 
+
 class Cumle:
 
     def __init__(self):
@@ -14,21 +15,22 @@ class Cumle:
         kelime_list = self.cumleIcerik.split(' ')
         i = 1
         for k in kelime_list:
-            self.kelime_ekle(k,i)
+            self.kelime_ekle(k, i)
             i += 1
 
+    def cumle_bilgi_ver(self):
+        temp = "Index : {} İçerik : {} {}".format(self.cumleIndex, self.cumleIcerik, self.kelimeleri_listele())
+        return temp
+
     def kelime_ekle(self, kelime, index, tip=None):
-        objKelime = Kelime()
-        objKelime.kelimeIndex = index
-        objKelime.kelimeIcerik = kelime
-        objKelime.kelimeTipi = KelimeTipi(tip)
-        self._cumleKelimeleri.append(objKelime)
+        obj_kelime = Kelime()
+        obj_kelime.kelimeIndex = index
+        obj_kelime.kelimeIcerik = kelime
+        obj_kelime.kelimeTipi = KelimeTipi(tip)
+        self._cumleKelimeleri.append(obj_kelime)
+        return obj_kelime
 
-    def kelimeleri_yaz(self):
-        for k in self._cumleKelimeleri:
-            print(k.kelimeIndex, k.kelimeIcerik)
-
-    def kelimeleri_ver(self):
+    def kelimeleri_listele(self):
         satirlar = "\n"
         for k in self._cumleKelimeleri:
             satirlar += '\t' + k.kelime_bilgi_ver()

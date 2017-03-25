@@ -13,12 +13,15 @@ class Paragraf:
         cumle_list = self.paragrafIcerik.split('.')
         i = 1
         for c in cumle_list:
-            self.cumle_ekle(i,c)
+            cumle = Cumle()
+            cumle.cumleIndex = i
+            cumle.cumleIcerik = c
+            self.cumle_ekle(cumle)
             i += 1
 
-    def cumleleri_yaz(self):
+    def cumleleri_listele(self):
         for c in self._cumleler:
-            print(c.cumleIndex, c.cumleIcerik, c.kelimeleri_ver())
+            print(c.cumle_bilgi_ver())
 
     def search_index(self, c_index):
         for c in self._cumleler:
@@ -27,11 +30,11 @@ class Paragraf:
         return None
 
     def cumle_ekle(self, index, icerik):
-        objCumle = Cumle()
-        objCumle.cumleIndex = index
-        objCumle.cumleIcerik = icerik
-        self._cumleler.append(objCumle)
-        return objCumle
+        obj_cumle = Cumle()
+        obj_cumle.cumleIndex = index
+        obj_cumle.cumleIcerik = icerik
+        self._cumleler.append(obj_cumle)
+        return obj_cumle
 
     @property
     def get_cumle(self):
