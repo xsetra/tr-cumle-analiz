@@ -38,10 +38,27 @@ class Paragraf:
         return obj_cumle
 
     def isim_tamlamalarini_topla(self):
-        cumle = self.get_cumle()
-        while cumle is not None:
-            cumle = self.get_cumle()
-            cumle.isim_tamlamalarini_bul()
+        c = Cumle
+        c = self.get_cumle()
+        while c is not None:
+            c = self.get_cumle()
+            c.isim_tamlamalarini_bul()
+            if len(c._isimTamlamalari) != 0:
+                for t in c._isimTamlamalari:
+                    if len(self._isimTamlamalari) == 0:
+                        self._isimTamlamalari.append(t)
+                    else:
+                        for i in self._isimTamlamalari:
+                            if t.cumleIcerik == i.cumleIcerik:
+                                i.cumleIndex += 1
+                            else:
+                                self._isimTamlamalari.append(t)
+
+    def isim_tamlamalarini_listele(self):
+        tmp_str = "\n"
+        for t in self._isimTamlamalari:
+            tmp_str += t.cumle_bilgi_ver() + "\n"
+        return tmp_str
 
     def get_cumle(self):
         if self.__last_cumle == len(self._cumleler):
