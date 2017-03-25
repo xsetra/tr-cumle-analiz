@@ -10,9 +10,8 @@ from ruleset import Ruleset
 
 dokuman = Paragraf()
 db = Veritabani()
-rules = Ruleset()
 
 db.baglan()
 db.kelime_bilgi(dokuman)
 
-dokuman.cumleleri_yaz()
+dokuman.cumleleri_listele()
