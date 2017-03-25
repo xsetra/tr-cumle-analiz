@@ -50,6 +50,11 @@ class Veritabani:
             k_tip = row[2]
             cumle.kelime_ekle(index=k_index, kelime_icerik=kelime, tip=k_tip)
 
+    def isimleri_cek(self, paragraf):
+        query = "SELECT * FROM kelimeler WHERE tip={}".format(KelimeTipi.isim.value)
+        self.cursor.execute(query)
+        results = self.cursor.fetchall()
+        print(results)
 
 if __name__ == '__main__':
     database = Veritabani()
