@@ -17,15 +17,4 @@ db.kelime_bilgi(dokuman)
 
 #dokuman.cumleleri_listele()
 
-c = dokuman.get_cumle()
-c.isim_tamlamalarini_bul()
-print(c._isimTamlamalari.keys(), c._isimTamlamalari.values())
-c = dokuman.get_cumle()
-c.isim_tamlamalarini_bul()
-print(c._isimTamlamalari.keys(), c._isimTamlamalari.values())
-c = dokuman.get_cumle()
-c.isim_tamlamalarini_bul()
-print(c._isimTamlamalari.keys(), c._isimTamlamalari.values())
-c = dokuman.get_cumle()
-c.isim_tamlamalarini_bul()
-print(c._isimTamlamalari.keys(), c._isimTamlamalari.values())
+

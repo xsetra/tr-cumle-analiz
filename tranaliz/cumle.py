@@ -11,7 +11,7 @@ class Cumle:
         self.cumleIndex = 0
         self.cumleIcerik = ""
         self._cumleKelimeleri = []
-        self._isimTamlamalari = {}
+        self._isimTamlamalari = []
 
     def kelimelere_bol(self):
         self.cumleIcerik = self.cumleIcerik.strip()
@@ -46,14 +46,16 @@ class Cumle:
     def isim_tamlamalarini_bul(self):
         i = 0
         for k in self._cumleKelimeleri:
-            kelime_list = []
             if i != 0:
                 if k.kelimeTipi.name == 'isim' and last_kelime.kelimeTipi.name == 'isim':
-
-                    kelime_list.append(k)
-                    kelime_list.append(tmp_kelime)
+                    tamlama = Cumle()
+                    tamlama.cumleIndex = 1
                     Kelime.kelime_concat(k, last_kelime)
-                    self._isimTamlamalari[last_kelime.kelimeIcerik] = kelime_list
+                    tamlama.cumleIcerik = last_kelime.kelimeIcerik
+
+                    tamlama._cumleKelimeleri.append(k)
+                    tamlama._cumleKelimeleri.append(tmp_kelime)
+                    self._isimTamlamalari.append(tamlama)
             i += 1
             last_kelime = copy.copy(k)
             tmp_kelime = copy.copy(k)

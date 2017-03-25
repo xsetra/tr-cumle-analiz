@@ -37,10 +37,11 @@ class Paragraf:
         self._cumleler.append(obj_cumle)
         return obj_cumle
 
-    def isim_tamlamalarini_bul(self):
+    def isim_tamlamalarini_topla(self):
         cumle = self.get_cumle()
         while cumle is not None:
             cumle = self.get_cumle()
+            cumle.isim_tamlamalarini_bul()
 
     def get_cumle(self):
         if self.__last_cumle == len(self._cumleler):
