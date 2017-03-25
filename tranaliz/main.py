@@ -19,6 +19,7 @@ dokuman.isim_tamlamalarini_topla()
 print(dokuman.isim_tamlamalarini_listele())
 
 db.isimleri_cek(dokuman)
+print(dokuman.isimleri_listele())
 
 
 db.kapat()

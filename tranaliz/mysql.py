@@ -26,7 +26,7 @@ class Veritabani:
         self.cursor = self.obj_db.cursor()
 
     def kapat(self):
-        self.obj_db = pymysql.close()
+        self.obj_db.close()
         print("Veritabanı bağlantısı kapatıldı.")
 
     def kelime_tipi_sorgula(self):
@@ -51,19 +51,28 @@ class Veritabani:
             cumle.kelime_ekle(index=k_index, kelime_icerik=kelime, tip=k_tip)
 
     def isimleri_cek(self, paragraf):
-        query = "SELECT * FROM kelimeler WHERE tip={}".format(KelimeTipi.isim.value)
+        query = "SELECT * FROM kelimeler WHERE tip='{}'".format(KelimeTipi.isim.value)
         self.cursor.execute(query)
         results = self.cursor.fetchall()
         for row in results:
             k = Kelime()
-            k.kelimeIcerik = row[1]
-            k.kelimeTipi = KelimeTipi.isim.value
-            k.kelimeEk = row[3]
+            k.kelimeIndex = 0
+            k.kelimeIcerik = str(row[1])
+            k.kelimeTipi = KelimeTipi.isim
+            k.kelimeEk = str(row[3])
+            k.kelimeFreq = self.frekans_degeri_ver(k.kelimeIcerik)
+            paragraf._isimler.append(k)
 
-            kelime_query = "SELECT * FROM kelimeler_freq WHERE kelime={}".format(k.kelimeIcerik)
-            self.cursor.execute(kelime_query)
-            row = self.cursor.fetchone()
-            k.kelimeFreq = row[1]
+    def frekans_degeri_ver(self, kelime_icerik):
+        kelime_query = "SELECT * FROM kelimeler_freq WHERE kelime='{}'".format(kelime_icerik)
+        self.cursor.execute(kelime_query)
+        row = self.cursor.fetchone()
+        if row is not None:
+            return row[1]
+        else:
+            return 0
+
+
 
 
 if __name__ == '__main__':
