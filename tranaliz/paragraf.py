@@ -69,7 +69,7 @@ class Paragraf:
     def isimleri_listele(self):
         tmp_str = "\n"
         for i in self._isimler:
-            tmp_str = i.kelime_bilgi_ver() + "\n"
+            tmp_str = i.kelime_ayrintili_bilgi_ver() + "\n"
         return tmp_str
 
 
