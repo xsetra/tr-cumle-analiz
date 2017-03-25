@@ -15,6 +15,7 @@ db = Veritabani()
 db.baglan()
 db.kelime_bilgi(dokuman)
 
+
 dokuman.isim_tamlamalarini_topla()
 print(dokuman.isim_tamlamalarini_listele())
 

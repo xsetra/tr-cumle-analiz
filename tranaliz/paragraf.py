@@ -9,6 +9,8 @@ class Paragraf:
         self._cumleler = []
         self.__last_cumle = 0
         self._isimTamlamalari = []
+        self._isimler = []
+        self._fiiller = []
 
     def icerik_bol(self):
         cumle_list = self.paragrafIcerik.split('.')
@@ -38,21 +40,25 @@ class Paragraf:
         return obj_cumle
 
     def isim_tamlamalarini_topla(self):
-        c = Cumle
         c = self.get_cumle()
+        ekle = 1
         while c is not None:
-            c = self.get_cumle()
             c.isim_tamlamalarini_bul()
             if len(c._isimTamlamalari) != 0:
                 for t in c._isimTamlamalari:
                     if len(self._isimTamlamalari) == 0:
                         self._isimTamlamalari.append(t)
+                        ekle = 0
                     else:
+                        ekle = 1
                         for i in self._isimTamlamalari:
                             if t.cumleIcerik == i.cumleIcerik:
                                 i.cumleIndex += 1
-                            else:
-                                self._isimTamlamalari.append(t)
+                                ekle = 0
+                                break
+                    if ekle == 1:
+                        self._isimTamlamalari.append(t)
+            c = self.get_cumle()
 
     def isim_tamlamalarini_listele(self):
         tmp_str = "\n"
