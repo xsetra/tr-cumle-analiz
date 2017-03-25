@@ -40,7 +40,6 @@ class Paragraf:
     def isim_tamlamalarini_bul(self):
         cumle = self.get_cumle()
         while cumle is not None:
-
             cumle = self.get_cumle()
 
     def get_cumle(self):

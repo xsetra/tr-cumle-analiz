@@ -10,7 +10,7 @@ class Cumle:
         self.cumleIndex = 0
         self.cumleIcerik = ""
         self._cumleKelimeleri = []
-        self._isimTamlamalari = []
+        self._isimTamlamalari = {}
 
     def kelimelere_bol(self):
         self.cumleIcerik = self.cumleIcerik.strip()
@@ -42,5 +42,23 @@ class Cumle:
         sirali_liste = sorted(self._cumleKelimeleri, key=lambda sirala: sirala.kelimeIndex)
         self._cumleKelimeleri = sirali_liste
 
+    def isim_tamlamalarini_bul(self):
+        i = 0
+        combo = 0
+        last_kelime = Kelime()
+        for k in self._cumleKelimeleri:
+            if i != 0:
+                if k.kelimeTipi.name == 'baglac':
+                    continue
+                elif k.kelimeTipi.name == 'isim' and last_kelime.kelimeTipi.name == 'isim':
+                    combo += 1
+                    Kelime.kelime_concat(k, last_kelime)
+                    if self._isimTamlamalari.get(last_kelime.kelimeIcerik) is not None:
+                        self._isimTamlamalari[last_kelime.kelimeIcerik] += 1
+                    else:
+                        self._isimTamlamalari[last_kelime.kelimeIcerik] = 1
+
+            i += 1
+            last_kelime = k
 
 
