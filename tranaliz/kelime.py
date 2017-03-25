@@ -22,6 +22,9 @@ class Kelime:
     def kelime_bilgi_ver(self):
         return str(self.kelimeIndex) + ' - ' + self.kelimeIcerik + ' - ' + str(self.kelimeTipi.name) + ' - ' + str(self.kelimeEk)
 
+    def kelime_ayrintili_bilgi_ver(self):
+        return self.kelimeIcerik + ' - ' + str(self.kelimeTipi.name) + ' - ' + str(self.kelimeEk) + ' - ' + str(self.kelimeFreq)
+
     @staticmethod
     def kelime_concat(kaynak, hedef):
         hedef.kelimeIcerik += " " + kaynak.kelimeIcerik
