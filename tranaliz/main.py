@@ -18,7 +18,7 @@ db.kelime_bilgi(dokuman)
 dokuman.isim_tamlamalarini_topla()
 print(dokuman.isim_tamlamalarini_listele())
 
-db.isimleri_cek(dokuman)
+db.isim_ve_fiil_cek(dokuman)
 print(dokuman.isimleri_listele())
 
 
