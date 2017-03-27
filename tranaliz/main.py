@@ -19,10 +19,14 @@ dokuman.isim_tamlamalarini_topla()
 print(dokuman.isim_tamlamalarini_listele())
 
 db.isim_ve_fiil_cek(dokuman)
-print("--İsimler--")
+
+"""print("--İsimler--")
 print(dokuman.isimleri_listele())
 print("--Fiiller--")
-print(dokuman.fiilleri_listele())
+print(dokuman.fiilleri_listele()) """
+
+
+print (dokuman._cumleler[0].cumle_isimlerini_listele())
 
 
 db.kapat()

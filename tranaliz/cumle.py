@@ -62,4 +62,12 @@ class Cumle:
             last_kelime = copy.copy(k)
             tmp_kelime = copy.copy(k)
 
+    def cumle_isimlerini_listele(self):
+        tmp_str = "\nCÜMLE İSİMLERİ\n"
+        for k in self._cumleIsimleri:
+            tmp_str += '\t' + k.kelime_bilgi_ver()
+        return tmp_str
+
+
+
 

@@ -8,4 +8,3 @@ class Ruleset:
     def __init__(self):
         self._sinifAdaylari = []
         self._siniflar = []
-        
