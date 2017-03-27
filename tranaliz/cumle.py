@@ -68,6 +68,11 @@ class Cumle:
             tmp_str += '\t' + k.kelime_bilgi_ver()
         return tmp_str
 
+    def cumle_fiillerini_listele(self):
+        tmp_str = "\nCÜMLE FİİLLERİ\n"
+        for k in self._cumleFiilleri:
+            tmp_str += '\t' + k.kelime_bilgi_ver()
+        return tmp_str
 
 
 

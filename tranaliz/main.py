@@ -27,6 +27,7 @@ print(dokuman.fiilleri_listele()) """
 
 
 print (dokuman._cumleler[0].cumle_isimlerini_listele())
+print (dokuman._cumleler[0].cumle_fiillerini_listele())
 
 
 db.kapat()
