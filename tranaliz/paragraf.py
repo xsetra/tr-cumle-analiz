@@ -107,7 +107,7 @@ class Paragraf:
     def limit_calculate(freq, number):
         limit = 100 / freq
         limit = limit * number
-        if limit >= 20:
+        if limit >= 25:
             return 1
         else:
             return 0
