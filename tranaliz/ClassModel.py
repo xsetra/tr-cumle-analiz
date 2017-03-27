@@ -7,3 +7,7 @@ class ClassModel:
         self.sinifNitelikleri = []
         self.sinifMetotlari = []
 
+    def nitelik_ekle_listeden(self, liste_kelime):
+        for k in liste_kelime:
+            if k.kelimeIcerik != self.sinifAdi.kelimeIcerik:
+                self.sinifNitelikleri.append(k)
