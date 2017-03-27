@@ -12,6 +12,8 @@ class Cumle:
         self.cumleIcerik = ""
         self._cumleKelimeleri = []
         self._isimTamlamalari = []
+        self._cumleIsimleri = []
+        self._cumleFiilleri = []
 
     def kelimelere_bol(self):
         self.cumleIcerik = self.cumleIcerik.strip()
