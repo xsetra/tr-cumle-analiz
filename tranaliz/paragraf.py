@@ -97,7 +97,7 @@ class Paragraf:
         self.sum_isim_frekans()
         for isim in self._isimler:
             if Paragraf.limit_calculate(freq=self.__isimFreqToplam, number=isim.kelimeFreq):
-                ruleset._sinifAdaylari.append(isim)
+                ruleset.sinif_adayi_ekle(pkelime=isim)
 
     def sum_isim_tamlama_frekans(self):
         for cumle in self._isimTamlamalari:
