@@ -27,7 +27,5 @@ class Ruleset:
             str_tmp += aday.sinifAdi.kelime_ayrintili_bilgi_ver()+"\n"
         return str_tmp
 
-    def fiilden_nitelik(self, cumle_list):
-        pass
 
 
