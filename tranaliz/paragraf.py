@@ -105,4 +105,13 @@ class Paragraf:
         for cumle in self._isimTamlamalari:
             self.__isimTamlamaFreqToplam += cumle.cumleIndex
 
+    @staticmethod
+    def limit_calculate(freq, number):
+        limit = 100 / freq
+        limit = limit * number
+        if limit >= 20:
+            return 1
+        else:
+            return 0
+
 
