@@ -13,6 +13,7 @@ class Paragraf:
         self._fiiller = []
         self.__isimFreqToplam = 0
         self.__isimTamlamaFreqToplam = 0
+        self._cumleSpecialVerbs = []
 
     def icerik_bol(self):
         cumle_list = self.paragrafIcerik.split('.')
@@ -122,19 +123,23 @@ class Paragraf:
                                          freq=cumle.cumleIndex)
 
     def search_cumle_fiilleri(self):
-        ret_list = []
-        breaking = 0
-        for c in self._cumleler:
+        if len(self._cumleSpecialVerbs) > 0:
+            return self._cumleSpecialVerbs
+        else:
+            ret_list = []
             breaking = 0
-            for special in Paragraf.__specialVerbs:
-                for fiil in c._cumleFiilleri:
-                    if special == fiil.kelimeIcerik:
-                        ret_list.append(c)
-                        breaking = 1
+            for c in self._cumleler:
+                breaking = 0
+                for special in Paragraf.__specialVerbs:
+                    for fiil in c._cumleFiilleri:
+                        if special == fiil.kelimeIcerik:
+                            ret_list.append(c)
+                            breaking = 1
+                            break
+                    if breaking == 1:
                         break
-                if breaking == 1:
-                    break
-        return ret_list
+            self._cumleSpecialVerbs = ret_list
+            return ret_list
 
 
 

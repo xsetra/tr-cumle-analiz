@@ -38,4 +38,7 @@ dokuman.isim_tamlama_sinif_adayi(kurallar)
 print(kurallar.sinif_adaylari_listele())
 
 
+
+
+
 db.kapat()
