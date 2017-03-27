@@ -88,4 +88,17 @@ class Paragraf:
         self.__last_cumle += 1
         return return_val
 
+    def sum_isim_frekans(self):
+        for isim in self._isimler:
+            self.__isimFreqToplam += isim.kelimeFreq
+        return self.__isimFreqToplam
+
+    def isim_sinif_adayi(self):
+        sinif_adaylari = []
+        limit_number = 100 / self.__isimFreqToplam
+        for isim in self._isimler:
+            limit_number = isim.kelimeFreq * limit_number
+            if limit_number >= 20:
+                sinif_adaylari.append(isim)
+        return sinif_adaylari
 
