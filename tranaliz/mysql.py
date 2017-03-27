@@ -92,7 +92,7 @@ class Veritabani:
         if row is not None:
             return row[1]
         else:
-            return 0
+            return 1
 
 if __name__ == '__main__':
     database = Veritabani()
