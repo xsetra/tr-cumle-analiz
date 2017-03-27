@@ -12,6 +12,7 @@ from ClassModel import ClassModel
 
 dokuman = Paragraf()
 db = Veritabani()
+kurallar = Ruleset()
 
 db.baglan()
 db.kelime_bilgi(dokuman)
@@ -20,15 +21,21 @@ dokuman.isim_tamlamalarini_topla()
 print(dokuman.isim_tamlamalarini_listele())
 
 db.isim_ve_fiil_cek(dokuman)
-
+"""
 print("--İsimler--")
 print(dokuman.isimleri_listele())
 print("--Fiiller--")
-print(dokuman.fiilleri_listele())
+print(dokuman.fiilleri_listele())"""
 
 
 """print (dokuman._cumleler[0].cumle_isimlerini_listele())
 print (dokuman._cumleler[0].cumle_fiillerini_listele())"""
+
+
+dokuman.isim_sinif_adayi(kurallar)
+dokuman.isim_tamlama_sinif_adayi(kurallar)
+
+
 
 
 db.kapat()
