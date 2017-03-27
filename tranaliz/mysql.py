@@ -51,7 +51,7 @@ class Veritabani:
             obj = cumle.kelime_ekle(index=k_index, kelime_icerik=kelime, tip=k_tip)
             if obj.kelimeTipi == KelimeTipi.isim:
                 cumle._cumleIsimleri.append(obj)
-            else:
+            elif obj.kelimeTipi == KelimeTipi.fiil:
                 cumle._cumleFiilleri.append(obj)
 
     def isim_ve_fiil_cek(self, paragraf):
