@@ -11,6 +11,8 @@ class Paragraf:
         self._isimTamlamalari = []
         self._isimler = []
         self._fiiller = []
+        self.__isimFreqToplam = 0
+        self.__isimTamlamaFreqToplam = 0
 
     def icerik_bol(self):
         cumle_list = self.paragrafIcerik.split('.')
@@ -85,3 +87,5 @@ class Paragraf:
         return_val = self._cumleler[self.__last_cumle]
         self.__last_cumle += 1
         return return_val
+
+

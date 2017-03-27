@@ -8,6 +8,7 @@ from cumle import Cumle
 from paragraf import Paragraf
 from mysql import Veritabani
 from ruleset import Ruleset
+from ClassModel import ClassModel
 
 dokuman = Paragraf()
 db = Veritabani()
