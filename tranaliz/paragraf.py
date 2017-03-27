@@ -128,7 +128,7 @@ class Paragraf:
             breaking = 0
             for special in Paragraf.__specialVerbs:
                 for fiil in c._cumleFiilleri:
-                    if special == fiil:
+                    if special == fiil.kelimeIcerik:
                         ret_list.append(c)
                         breaking = 1
                         break
