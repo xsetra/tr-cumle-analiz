@@ -101,4 +101,8 @@ class Paragraf:
             if limit_number >= 20:
                 ruleset._sinifAdaylari.append(isim)
 
+    def sum_isim_tamlama_frekans(self):
+        for cumle in self._isimTamlamalari:
+            self.__isimTamlamaFreqToplam += cumle.cumleIndex
+
 
