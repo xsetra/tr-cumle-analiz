@@ -95,10 +95,8 @@ class Paragraf:
 
     def isim_sinif_adayi(self, ruleset):
         self.sum_isim_frekans()
-        limit_number = 100 / self.__isimFreqToplam
         for isim in self._isimler:
-            limit_number = isim.kelimeFreq * limit_number
-            if limit_number >= 20:
+            if Paragraf.limit_calculate(freq=self.__isimFreqToplam, number=isim.kelimeFreq):
                 ruleset._sinifAdaylari.append(isim)
 
     def sum_isim_tamlama_frekans(self):
