@@ -3,7 +3,7 @@ from cumle import Cumle
 from kelime import *
 
 class Paragraf:
-
+    __specialVerbs = ["içermek","sahip olmak","dahil olmak","yer almak","bulundurmak","olmak","bulunmak"]
     def __init__(self):
         self.paragrafIcerik = ""
         self._cumleler = []
@@ -120,4 +120,21 @@ class Paragraf:
                                          ek=-1,
                                          tip=KelimeTipi.isim,
                                          freq=cumle.cumleIndex)
+
+    def search_cumle_fiilleri(self):
+        ret_list = []
+        breaking = 0
+        for c in self._cumleler:
+            breaking = 0
+            for special in Paragraf.__specialVerbs:
+                for fiil in c._cumleFiilleri:
+                    if special == fiil:
+                        ret_list.append(c)
+                        breaking = 1
+                        break
+                if breaking == 1:
+                    break
+        return ret_list
+
+
 
