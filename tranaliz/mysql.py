@@ -48,7 +48,11 @@ class Veritabani:
             k_index = row[5]
             kelime = row[1]
             k_tip = row[2]
-            cumle.kelime_ekle(index=k_index, kelime_icerik=kelime, tip=k_tip)
+            obj = cumle.kelime_ekle(index=k_index, kelime_icerik=kelime, tip=k_tip)
+            if obj.kelimeTipi == KelimeTipi.isim:
+                cumle._cumleIsimleri.append(obj)
+            else:
+                cumle._cumleFiilleri.append(obj)
 
     def isim_ve_fiil_cek(self, paragraf):
         query = "SELECT * FROM kelimeler WHERE tip='{}' or tip='{}'".format(KelimeTipi.isim.value, KelimeTipi.fiil.value)
