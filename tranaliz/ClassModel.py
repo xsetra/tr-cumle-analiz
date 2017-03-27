@@ -6,3 +6,4 @@ class ClassModel:
         self.sinifAdi = None
         self.sinifNitelikleri = []
         self.sinifMetotlari = []
+
