@@ -94,6 +94,7 @@ class Paragraf:
         return self.__isimFreqToplam
 
     def isim_sinif_adayi(self):
+        self.sum_isim_frekans()
         sinif_adaylari = []
         limit_number = 100 / self.__isimFreqToplam
         for isim in self._isimler:
