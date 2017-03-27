@@ -35,10 +35,9 @@ print (dokuman._cumleler[0].cumle_fiillerini_listele())"""
 dokuman.isim_sinif_adayi(kurallar)
 dokuman.isim_tamlama_sinif_adayi(kurallar)
 
+
+dokuman.search_cumle_fiilleri(kurallar)
+
 print(kurallar.sinif_adaylari_listele())
-
-
-
-
 
 db.kapat()

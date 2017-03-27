@@ -24,7 +24,7 @@ class Ruleset:
     def sinif_adaylari_listele(self):
         str_tmp = "\n"
         for aday in self._sinifAdaylari:
-            str_tmp += aday.sinifAdi.kelime_ayrintili_bilgi_ver()+"\n"
+            str_tmp += aday.sinifAdi.kelime_ayrintili_bilgi_ver()+" \n>>> "+aday.nitelikleri_listele()+"\n"
         return str_tmp
 
 
