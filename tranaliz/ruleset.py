@@ -9,5 +9,15 @@ class Ruleset:
         self._sinifAdaylari = []
         self._siniflar = []
 
-    def sinif_adayi_ekle(self, obj_kelime):
+    def sinif_adayi_ekle(self, pkelime=None, icerik=None, freq=None, tip=None, ek=None):
+        if type(pkelime).__name__ != 'Kelime':
+            pkelime = Kelime()
+            pkelime.kelimeIcerik = icerik
+            pkelime.kelimeFreq = freq
+            pkelime.kelimeTipi = KelimeTipi(tip)
+            pkelime.kelimeEk = ek
+        self._sinifAdaylari.append(pkelime)
+
+
+
 

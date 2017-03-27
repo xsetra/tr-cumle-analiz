@@ -64,7 +64,7 @@ class Veritabani:
             k.kelimeIndex = row[0]
             k.kelimeIcerik = str(row[1])
             tip = row[2]
-            k.kelimeEk = str(row[3])
+            k.kelimeEk = row[3]
             k.kelimeFreq = self.frekans_degeri_ver(k.kelimeIcerik)
 
             if tip == KelimeTipi.isim.value:
