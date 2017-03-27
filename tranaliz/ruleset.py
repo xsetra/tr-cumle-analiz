@@ -18,6 +18,11 @@ class Ruleset:
             pkelime.kelimeEk = ek
         self._sinifAdaylari.append(pkelime)
 
+    def sinif_adaylari_listele(self):
+        str_tmp = "\n"
+        for aday in self._sinifAdaylari:
+            str_tmp += aday.kelime_bilgi_ver()+"\n"
+        return str_tmp
 
 
 
