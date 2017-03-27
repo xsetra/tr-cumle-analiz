@@ -112,4 +112,12 @@ class Paragraf:
         else:
             return 0
 
+    def isim_tamlama_sinif_adayi(self, ruleset):
+        self.sum_isim_tamlama_frekans()
+        for cumle in self._isimTamlamalari:
+            if limit_calculate(self.__isimTamlamaFreqToplam, cumle.cumleIndex):
+                ruleset.sinif_adayi_ekle(icerik=cumle.cumleIcerik,
+                                         ek=-1,
+                                         tip=KelimeTipi.isim,
+                                         freq=cumle.cumleIndex)
 
