@@ -93,13 +93,12 @@ class Paragraf:
             self.__isimFreqToplam += isim.kelimeFreq
         return self.__isimFreqToplam
 
-    def isim_sinif_adayi(self):
+    def isim_sinif_adayi(self, ruleset):
         self.sum_isim_frekans()
-        sinif_adaylari = []
         limit_number = 100 / self.__isimFreqToplam
         for isim in self._isimler:
             limit_number = isim.kelimeFreq * limit_number
             if limit_number >= 20:
-                sinif_adaylari.append(isim)
-        return sinif_adaylari
+                ruleset._sinifAdaylari.append(isim)
+
 
