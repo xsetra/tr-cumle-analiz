@@ -122,24 +122,26 @@ class Paragraf:
                                          tip=KelimeTipi.isim,
                                          freq=cumle.cumleIndex)
 
-    def search_cumle_fiilleri(self):
-        if len(self._cumleSpecialVerbs) > 0:
-            return self._cumleSpecialVerbs
-        else:
-            ret_list = []
+    def search_cumle_fiilleri(self, ruleset):
+        for c in self._cumleler:
             breaking = 0
-            for c in self._cumleler:
-                breaking = 0
-                for special in Paragraf.__specialVerbs:
-                    for fiil in c._cumleFiilleri:
-                        if special == fiil.kelimeIcerik:
-                            ret_list.append(c)
-                            breaking = 1
-                            break
-                    if breaking == 1:
+            for special in Paragraf.__specialVerbs:
+                for fiil in c._cumleFiilleri:
+                    if special == fiil.kelimeIcerik:
+                        breaking = 1
                         break
-            self._cumleSpecialVerbs = ret_list
-            return ret_list
+                if breaking == 1:
+                    break
 
+            if breaking == 1:
+                for isim in c._cumleIsimleri:
+                    for aday in ruleset._sinifAdaylari:
+                        if isim.kelimeIcerik == aday.sinifAdi.kelimeIcerik:
+                            breaking = 2
+                            break
+                    if breaking == 2:
+                        break
+            if breaking == 2:
+                aday.nitelik_ekle_listeden(c._cumleIsimleri)
 
 
