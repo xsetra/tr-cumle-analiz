@@ -11,6 +11,12 @@ class KelimeTipi(Enum):
     baglac = 6
 
 
+class Noktalama(Enum):
+    empty = 0
+    virgul = 1
+    noktali_virgul = 2
+
+
 class Kelime:
     def __init__(self):
         self.kelimeIndex = 0
@@ -18,6 +24,7 @@ class Kelime:
         self.kelimeTipi = KelimeTipi
         self.kelimeEk = 0
         self.kelimeFreq = 0
+        self.kelimeNoktalama = Noktalama
 
     def kelime_bilgi_ver(self):
         return str(self.kelimeIndex) + ' - ' + self.kelimeIcerik + ' - ' + str(self.kelimeTipi.name) + ' - ' + str(self.kelimeEk)
