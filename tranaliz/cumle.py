@@ -2,6 +2,7 @@
 
 from kelime import Kelime
 from kelime import KelimeTipi
+from kelime import Noktalama
 import copy
 
 
@@ -50,7 +51,8 @@ class Cumle:
         i = 0
         for k in self._cumleKelimeleri:
             if i != 0:
-                if k.kelimeTipi.name == 'isim' and last_kelime.kelimeTipi.name == 'isim':
+                if k.kelimeTipi.name == 'isim' and last_kelime.kelimeTipi.name == 'isim' \
+                        and last_kelime.kelimeNoktalama.name == 'empty':
                     tamlama = Cumle()
                     tamlama.cumleIndex = 1
                     Kelime.kelime_concat(k, last_kelime)

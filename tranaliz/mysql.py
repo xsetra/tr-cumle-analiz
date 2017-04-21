@@ -48,7 +48,8 @@ class Veritabani:
             k_index = row[5]
             kelime = row[1]
             k_tip = row[2]
-            obj = cumle.kelime_ekle(index=k_index, kelime_icerik=kelime, tip=k_tip)
+            k_noktalama = row[8]
+            obj = cumle.kelime_ekle(index=k_index, kelime_icerik=kelime, tip=k_tip, noktalama=k_noktalama)
             paragraf.kelimeSayisi += 1
             if obj.kelimeTipi == KelimeTipi.isim:
                 cumle._cumleIsimleri.append(obj)
