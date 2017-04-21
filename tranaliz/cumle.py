@@ -27,11 +27,12 @@ class Cumle:
         temp = "Index : {} - İçerik : {} {}".format(self.cumleIndex, self.cumleIcerik, self.kelimeleri_listele())
         return temp
 
-    def kelime_ekle(self, kelime_icerik, index, tip=None):
+    def kelime_ekle(self, kelime_icerik, index, tip=None, noktalama=None):
         obj_kelime = Kelime()
         obj_kelime.kelimeIndex = index
         obj_kelime.kelimeIcerik = kelime_icerik
         obj_kelime.kelimeTipi = KelimeTipi(tip)
+        obj_kelime.kelimeNoktalama = Noktalama(noktalama)
         self._cumleKelimeleri.append(obj_kelime)
         return obj_kelime
 

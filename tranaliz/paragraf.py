@@ -2,8 +2,11 @@
 from cumle import Cumle
 from kelime import *
 
+
 class Paragraf:
     __specialVerbs = ["içermek","sahip olmak","dahil olmak","yer almak","bulundurmak","olmak","bulunmak"]
+    kelimeSayisi = 0
+
     def __init__(self):
         self.paragrafIcerik = ""
         self._cumleler = []
@@ -122,7 +125,9 @@ class Paragraf:
                                          tip=KelimeTipi.isim,
                                          freq=cumle.cumleIndex)
 
-    def search_cumle_fiilleri(self, ruleset):
+
+
+    def _search_cumle_fiilleri(self, ruleset):
         for c in self._cumleler:
             breaking = 0
             for special in Paragraf.__specialVerbs:
