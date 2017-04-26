@@ -11,6 +11,7 @@ class Cumle:
     def __init__(self):
         self.cumleIndex = 0
         self.cumleIcerik = ""
+        self.cumleLocation = 0
         self._cumleKelimeleri = []
         self._isimTamlamalari = []
         self._cumleIsimleri = []
@@ -25,6 +26,10 @@ class Cumle:
             i += 1
 
     def cumle_bilgi_ver(self):
+        temp = "Index : {} - İçerik : {} {}".format(self.cumleIndex, self.cumleIcerik, self.kelimeleri_listele())
+        return temp
+
+    def cumle_bilgi_ruleset(self):
         temp = "Index : {} - İçerik : {} {}".format(self.cumleIndex, self.cumleIcerik, self.kelimeleri_listele())
         return temp
 

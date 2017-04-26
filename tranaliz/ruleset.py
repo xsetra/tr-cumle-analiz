@@ -10,21 +10,30 @@ class Ruleset:
         self._sinifAdaylari = []
         self._siniflar = []
 
-    def sinif_adayi_ekle(self, pkelime=None, icerik=None, freq=None, tip=None, ek=None):
+    def sinif_adayi_ekle(self, pkelime=None, icerik=None, freq=None, tip=None, ek=None, cumle_kelimeleri=None):
         sinif_model = ClassModel()
+        c = Cumle()
         if type(pkelime).__name__ != 'Kelime':
-            pkelime = Kelime()
+            # pkelime = Kelime()
             pkelime.kelimeIcerik = icerik
             pkelime.kelimeFreq = freq
             pkelime.kelimeTipi = KelimeTipi(tip)
             pkelime.kelimeEk = ek
-        sinif_model.sinifAdi = pkelime
+            c.cumleIcerik = icerik
+            c._cumleKelimeleri.append(pkelime)
+
+        if cumle_kelimeleri is not None:
+            c.cumleIcerik = cumle_kelimeleri[0]
+            Kelime.kelime_concat(cumle_kelimeleri[1], c.cumleIcerik)
+            c._cumleKelimeleri = cumle_kelimeleri
+
+        sinif_model.sinifAdi = c
         self._sinifAdaylari.append(sinif_model)
 
     def sinif_adaylari_listele(self):
         str_tmp = "\n"
         for aday in self._sinifAdaylari:
-            str_tmp += aday.sinifAdi.kelime_ayrintili_bilgi_ver()+" \n>>> "+aday.nitelikleri_listele()+"\n"
+            str_tmp += str(aday.sinifAdi.cumle_bilgi_ruleset())
         return str_tmp
 
 

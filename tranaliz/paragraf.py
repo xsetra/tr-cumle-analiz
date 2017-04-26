@@ -42,6 +42,7 @@ class Paragraf:
         obj_cumle = Cumle()
         obj_cumle.cumleIndex = index
         obj_cumle.cumleIcerik = icerik
+        obj_cumle.cumleLocation = index
         self._cumleler.append(obj_cumle)
         return obj_cumle
 
@@ -111,6 +112,7 @@ class Paragraf:
     def limit_calculate(freq, number):
         limit = 100 / freq
         limit = limit * number
+
         if limit >= 20:
             return 1
         else:
@@ -123,11 +125,10 @@ class Paragraf:
                 ruleset.sinif_adayi_ekle(icerik=cumle.cumleIcerik,
                                          ek=-1,
                                          tip=KelimeTipi.isim,
-                                         freq=cumle.cumleIndex)
+                                         freq=cumle.cumleIndex,
+                                         cumle_kelimeleri=cumle._cumleKelimeleri)
 
-
-
-    def _search_cumle_fiilleri(self, ruleset):
+    def search_cumle_fiilleri(self, ruleset):
         for c in self._cumleler:
             breaking = 0
             for special in Paragraf.__specialVerbs:
@@ -141,12 +142,12 @@ class Paragraf:
             if breaking == 1:
                 for isim in c._cumleIsimleri:
                     for aday in ruleset._sinifAdaylari:
-                        if isim.kelimeIcerik == aday.sinifAdi.kelimeIcerik:
+                        if isim.kelimeIcerik == aday.sinifAdi.cumleIcerik:
                             breaking = 2
                             break
                     if breaking == 2:
                         break
             if breaking == 2:
-                aday.nitelik_ekle_listeden(c._cumleIsimleri)
+                aday.nitelik_ekle_listeden(c._cumleIsimleri, ruleset._sinifAdaylari)
 
 
