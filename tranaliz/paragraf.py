@@ -59,8 +59,8 @@ class Paragraf:
                     else:
                         ekle = 1
                         for i in self._isimTamlamalari:
-                            if t.cumleIcerik == i.cumleIcerik:
-                                i.cumleIndex += 1
+                            if t.kelimeIcerik == i.kelimeIcerik:
+                                i.kelimeFreq += 1
                                 ekle = 0
                                 break
                     if ekle == 1:
@@ -70,7 +70,7 @@ class Paragraf:
     def isim_tamlamalarini_listele(self):
         tmp_str = "\n"
         for t in self._isimTamlamalari:
-            tmp_str += t.cumle_bilgi_ver() + "\n"
+            tmp_str += t.kelime_ayrintili_bilgi_ver() + "\n"
         return tmp_str
 
     def isimleri_listele(self):

@@ -53,22 +53,29 @@ class Cumle:
         self._cumleKelimeleri = sirali_liste
 
     def isim_tamlamalarini_bul(self):
+        pop_list = []
         i = 0
         for k in self._cumleKelimeleri:
             if i != 0:
                 if k.kelimeTipi.name == 'isim' and last_kelime.kelimeTipi.name == 'isim' \
                         and last_kelime.kelimeNoktalama.name == 'empty':
-                    tamlama = Cumle()
+                    pop_list.append(i)
+                    last_kelime.kelimeIcerik += " " + k.kelimeIcerik
+                    self._cumleKelimeleri[i-1] = last_kelime
+                    self._isimTamlamalari.append(last_kelime)
+                    """tamlama = Cumle()
                     tamlama.cumleIndex = 1
                     Kelime.kelime_concat(k, last_kelime)
                     tamlama.cumleIcerik = last_kelime.kelimeIcerik
 
                     tamlama._cumleKelimeleri.append(k)
                     tamlama._cumleKelimeleri.append(tmp_kelime)
-                    self._isimTamlamalari.append(tamlama)
+                    self._isimTamlamalari.append(tamlama)"""
             i += 1
             last_kelime = copy.copy(k)
-            tmp_kelime = copy.copy(k)
+
+        for willPop in pop_list:
+            self._cumleKelimeleri.pop(willPop)
 
     def cumle_isimlerini_listele(self):
         tmp_str = "\nCÜMLE İSİMLERİ\n"

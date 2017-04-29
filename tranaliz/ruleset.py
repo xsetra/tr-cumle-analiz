@@ -30,6 +30,8 @@ class Ruleset:
         for aday in self._sinifAdaylari:
             str_tmp += "\n >>> Sınıf Adayı ::: "
             str_tmp += str(aday.sinifAdi.cumle_bilgi_ruleset())
+            str_tmp += "\n\tNitelikler :::"
+            str_tmp += "\t\t" + aday.nitelikleri_listele()
         return str_tmp
 
 
