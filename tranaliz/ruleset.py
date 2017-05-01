@@ -9,7 +9,12 @@ class Ruleset:
     def __init__(self):
         self._sinifAdaylari = []
         self._siniflar = []
-        self._iliskiliSiniflar = {}
+
+    def iliskili_siniflari_listele(self):
+        str_tmp = "İlişkili sınıflar:\n"
+        for aday in self._sinifAdaylari:
+            str_tmp += aday.sinifAdi.cumleIcerik + " ::: " + aday.iliski_listele() + "\n"
+        return str_tmp
 
     def sinif_adayi_ekle(self, pkelime=None, icerik=None, freq=None, tip=None, ek=None, cumle_kelimeleri=None):
         sinif_model = ClassModel()
