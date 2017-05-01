@@ -46,6 +46,13 @@ class Paragraf:
         self._cumleler.append(obj_cumle)
         return obj_cumle
 
+    def isimleri_topla(self):
+        c = self.get_cumle()
+        ekle = 1
+        while c is not None:
+            c.cumle_isimlerini_duzenle()
+            c = self.get_cumle()
+
     def isim_tamlamalarini_topla(self):
         c = self.get_cumle()
         ekle = 1
@@ -105,8 +112,8 @@ class Paragraf:
                 ruleset.sinif_adayi_ekle(pkelime=isim)
 
     def sum_isim_tamlama_frekans(self):
-        for cumle in self._isimTamlamalari:
-            self.__isimTamlamaFreqToplam += cumle.cumleIndex
+        for kelime in self._isimTamlamalari:
+            self.__isimTamlamaFreqToplam += kelime.kelimeFreq
 
     @staticmethod
     def limit_calculate(freq, number):
@@ -120,13 +127,9 @@ class Paragraf:
 
     def isim_tamlama_sinif_adayi(self, ruleset):
         self.sum_isim_tamlama_frekans()
-        for cumle in self._isimTamlamalari:
-            if Paragraf.limit_calculate(self.__isimTamlamaFreqToplam, cumle.cumleIndex):
-                ruleset.sinif_adayi_ekle(icerik=cumle.cumleIcerik,
-                                         ek=-1,
-                                         tip=KelimeTipi.isim,
-                                         freq=cumle.cumleIndex,
-                                         cumle_kelimeleri=cumle._cumleKelimeleri)
+        for kelime in self._isimTamlamalari:
+            if Paragraf.limit_calculate(self.__isimTamlamaFreqToplam, kelime.kelimeFreq):
+                ruleset.sinif_adayi_ekle(pkelime=kelime)
 
     def search_cumle_fiilleri(self, ruleset):
         for c in self._cumleler:

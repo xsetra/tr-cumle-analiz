@@ -10,10 +10,16 @@ class ClassModel:
 
     def nitelik_ekle_listeden(self, liste_kelime, sinif_adaylari):
         for k in liste_kelime:
-            if k.kelimeIcerik != self.sinifAdi.cumleIcerik:
-                for cumle in sinif_adaylari:
-                    if k.kelimeIcerik != cumle.sinifAdi.cumleIcerik:
-                        self.sinifNitelikleri.append(k)
+            ekle = 0
+            for cumle in sinif_adaylari:
+                if k.kelimeIcerik == cumle.sinifAdi.cumleIcerik:
+                    ekle = 0
+                    break
+                else:
+                    ekle = 1
+            if ekle == 1:
+                self.sinifNitelikleri.append(k)
+
 
     def nitelikleri_listele(self):
         tmp_str = "\nNitelikler\n"

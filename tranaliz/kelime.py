@@ -25,6 +25,7 @@ class Kelime:
         self.kelimeEk = 0
         self.kelimeFreq = 0
         self.kelimeNoktalama = Noktalama
+        self.kelimeExtra = 0
 
     def kelime_bilgi_ver(self):
         return str(self.kelimeIndex) + ' - ' + self.kelimeIcerik + ' - ' + str(self.kelimeTipi.name) + ' - ' + str(self.kelimeEk)
