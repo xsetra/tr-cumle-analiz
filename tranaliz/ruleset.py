@@ -9,6 +9,7 @@ class Ruleset:
     def __init__(self):
         self._sinifAdaylari = []
         self._siniflar = []
+        self._iliskiliSiniflar = {}
 
     def sinif_adayi_ekle(self, pkelime=None, icerik=None, freq=None, tip=None, ek=None, cumle_kelimeleri=None):
         sinif_model = ClassModel()

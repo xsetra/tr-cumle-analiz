@@ -151,6 +151,6 @@ class Paragraf:
                     if breaking == 2:
                         break
             if breaking == 2:
-                aday.nitelik_ekle_listeden(c._cumleIsimleri, ruleset._sinifAdaylari)
+                aday.nitelik_ekle_listeden(c, ruleset)
 
 
