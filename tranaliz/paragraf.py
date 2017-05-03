@@ -4,7 +4,7 @@ from kelime import *
 
 
 class Paragraf:
-    __specialVerbs = ["içermek","sahip olmak","dahil olmak","yer almak","bulundurmak","olmak","bulunmak"]
+    _specialVerbs = ["içermek","sahip olmak","dahil olmak","yer almak","bulundurmak","olmak","bulunmak"]
     kelimeSayisi = 0
 
     def __init__(self):
@@ -134,7 +134,7 @@ class Paragraf:
     def search_cumle_fiilleri(self, ruleset):
         for c in self._cumleler:
             breaking = 0
-            for special in Paragraf.__specialVerbs:
+            for special in Paragraf._specialVerbs:
                 for fiil in c._cumleFiilleri:
                     if special == fiil.kelimeIcerik:
                         breaking = 1

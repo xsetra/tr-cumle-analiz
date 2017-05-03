@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from paragraf import Paragraf
 
 class ClassModel:
     __specialMetotIsimleri = ["davranış", "metot"]
@@ -14,7 +15,14 @@ class ClassModel:
     def metot_ekle(self, cumle_obj):
         for fiil in cumle_obj._cumleFiilleri:
             if self.metot_var_mi(fiil) is False:
-                self.sinifMetotlari.append(fiil)
+                if self.metot_in_special_verbs(fiil) is False:
+                    self.sinifMetotlari.append(fiil)
+
+    def metot_in_special_verbs(self, fiil):
+        for special in Paragraf._specialVerbs:
+            if special == fiil.kelimeIcerik:
+                return True
+        return False
 
     def metot_var_mi(self, metot_kelime):
         if metot_kelime.kelimeIcerik in self.sinifMetotlari:
