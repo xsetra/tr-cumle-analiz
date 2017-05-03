@@ -36,8 +36,15 @@ class ClassModel:
                     break
                 elif cumle_obj._cumleKelimeleri[i+1].kelimeTipi.name == 'fiil':
                     nitelik_class.kelimeIliski = cumle_obj._cumleKelimeleri[i+1].kelimeIcerik
-                    self.iliskiliSiniflar.append(nitelik_class)
+                    if self.iliski_var_mi(nitelik_class) is False:
+                        self.iliskiliSiniflar.append(nitelik_class)
             i += 1
+
+    def iliski_var_mi(self, iliski_kelime):
+        for iliski in self.iliskiliSiniflar:
+            if iliski.kelimeIcerik == iliski_kelime.kelimeIcerik:
+                return True
+        return False
 
     def nitelik_ekle(self, kelime_nitelik):
         if(self.nitelik_var_mi(kelime_nitelik)):
