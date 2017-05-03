@@ -2,12 +2,27 @@
 
 
 class ClassModel:
+    __specialMetotIsimleri = ["davranış", "metot"]
+
     def __init__(self):
         self.sinifAdi = None
         self.sinifNitelikleri = []
         self.sinifMetotlari = []
         self.cumleIndexes = []
         self.iliskiliSiniflar = []
+
+    def metot_ekle(self, cumle_obj):
+        for fiil in cumle_obj._cumleFiilleri:
+            if self.metot_var_mi(fiil) is False:
+                self.sinifMetotlari.append(fiil)
+
+    def metot_var_mi(self, metot_kelime):
+        if metot_kelime.kelimeIcerik in self.sinifMetotlari:
+            return True
+        return False
+
+    def metotlari_listele(self):
+
 
     def nitelik_ekle_listeden(self, cumle_obj, ruleset_obj):
         for nitelik in cumle_obj._cumleIsimleri:
@@ -18,12 +33,13 @@ class ClassModel:
                     if nitelik.kelimeIcerik == class_model.sinifAdi.cumleIcerik: # 2 sınıf arasında, ilişki var
                         self.iliski_ekle(nitelik, cumle_obj)
                         break
-            self.nitelik_ekle(nitelik)
+            if self.nitelik_ekle(nitelik) == "metot":
+                self.metot_ekle(cumle_obj)
 
     def iliski_listele(self):
         str_tmp = ""
         for iliski in self.iliskiliSiniflar:
-            str_tmp += "\t" + iliski.kelimeIcerik + " : " + iliski.kelimeIliski +"\n"
+            str_tmp += "\t" + iliski.kelimeIcerik + " : " + iliski.kelimeIliski + "\n"
         return str_tmp
 
     def iliski_ekle(self, nitelik_class, cumle_obj):
@@ -47,7 +63,9 @@ class ClassModel:
         return False
 
     def nitelik_ekle(self, kelime_nitelik):
-        if(self.nitelik_var_mi(kelime_nitelik)):
+        if kelime_nitelik.kelimeIcerik in ClassModel.__specialMetotIsimleri:
+            return "metot"
+        if self.nitelik_var_mi(kelime_nitelik):
             return
         else:
             self.sinifNitelikleri.append(kelime_nitelik)
