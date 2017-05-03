@@ -10,16 +10,14 @@ class ClassModel:
         self.iliskiliSiniflar = []
 
     def nitelik_ekle_listeden(self, cumle_obj, ruleset_obj):
-        i = 0
         for nitelik in cumle_obj._cumleIsimleri:
             if nitelik.kelimeIcerik == self.sinifAdi.cumleIcerik:
                 continue
             else:
                 for class_model in ruleset_obj._sinifAdaylari:
                     if nitelik.kelimeIcerik == class_model.sinifAdi.cumleIcerik: # 2 sınıf arasında, ilişki var
-                        self.iliski_ekle(nitelik, cumle_obj, i)
+                        self.iliski_ekle(nitelik, cumle_obj)
                         break
-            i += 1
             self.nitelik_ekle(nitelik)
 
     def iliski_listele(self):
@@ -28,11 +26,18 @@ class ClassModel:
             str_tmp += "\t" + iliski.kelimeIcerik + " : " + iliski.kelimeIliski +"\n"
         return str_tmp
 
-    def iliski_ekle(self, nitelik_class, cumle_obj, sira):
-        if cumle_obj._cumleKelimeleri[sira + 1].kelimeTipi.name == 'fiil' and \
-                        (sira + 1) == (len(cumle_obj._cumleKelimeleri) -1):
-            nitelik_class.kelimeIliski = cumle_obj._cumleKelimeleri[sira + 1].kelimeIcerik
-            self.iliskiliSiniflar.append(nitelik_class)
+    def iliski_ekle(self, nitelik_class, cumle_obj):
+        i = 0
+        length = len(cumle_obj._cumleKelimeleri)
+
+        for k in cumle_obj._cumleKelimeleri:
+            if k.kelimeIcerik == nitelik_class.kelimeIcerik:
+                if (i+1) == length:
+                    break
+                elif cumle_obj._cumleKelimeleri[i+1].kelimeTipi.name == 'fiil':
+                    nitelik_class.kelimeIliski = cumle_obj._cumleKelimeleri[i+1].kelimeIcerik
+                    self.iliskiliSiniflar.append(nitelik_class)
+            i += 1
 
     def nitelik_ekle(self, kelime_nitelik):
         if(self.nitelik_var_mi(kelime_nitelik)):
