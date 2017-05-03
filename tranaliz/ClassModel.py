@@ -22,7 +22,10 @@ class ClassModel:
         return False
 
     def metotlari_listele(self):
-
+        str_temp = "Metotlar : \n"
+        for kelime_metot in self.sinifMetotlari:
+            str_temp += "\t" + kelime_metot.kelime_ayrintili_bilgi_ver()
+        return str_temp
 
     def nitelik_ekle_listeden(self, cumle_obj, ruleset_obj):
         for nitelik in cumle_obj._cumleIsimleri:
@@ -81,4 +84,5 @@ class ClassModel:
         tmp_str = "\nNitelikler\n"
         for n in self.sinifNitelikleri:
             tmp_str += "\t"+n.kelime_ayrintili_bilgi_ver()+"\n"
+        tmp_str += self.metotlari_listele()
         return tmp_str
