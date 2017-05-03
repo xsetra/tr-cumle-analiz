@@ -14,6 +14,7 @@ class Cumle:
         self.cumleLocation = 0
         self._cumleKelimeleri = []
         self._isimTamlamalari = []
+        self._sifatTamlamalari = []
         self._cumleIsimleri = []
         self._cumleFiilleri = []
 
@@ -101,5 +102,6 @@ class Cumle:
             tmp_str += '\t' + k.kelime_bilgi_ver()
         return tmp_str
 
+    def sifat_tamlamalarini_bul(self):
 
 

@@ -53,6 +53,9 @@ class Paragraf:
             c.cumle_isimlerini_duzenle()
             c = self.get_cumle()
 
+    def sifat_tamlamalarini_topla(self):
+        pass
+
     def isim_tamlamalarini_topla(self):
         c = self.get_cumle()
         ekle = 1
