@@ -87,7 +87,6 @@ class ClassModel:
                 return True
         return False
 
-
     def nitelikleri_listele(self):
         tmp_str = "\n"
         for n in self.sinifNitelikleri:
